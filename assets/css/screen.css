@@ -29,7 +29,7 @@ production stylesheet in assets/built/screen.css
 @import "global.css";
 
 body {
-    background: #fff;
+    /*background: #fff url(../greenyellowpinkdnabackground.png);*/
 }
 
 .img {
@@ -60,6 +60,7 @@ body {
 .site-main {
     z-index: 100;
     flex-grow: 1;
+    background: #fff url(../greenyellowpinkdnabackground.png);
 }
 
 /* Full width page blocks */
@@ -97,22 +98,24 @@ body {
     }
     .home-template .site-nav {
         position: relative;
-        top: -70px;
     }
 }
 
 
 /* 4. Site Header
 /* ---------------------------------------------------------- */
-
+.main-header{
+    background: none !important;
+}
 .site-header {
     position: relative;
     padding-top: 12px;
     padding-bottom: 12px;
-    color: #fff;
-    background: color(var(--pink) l(-5%)) no-repeat center center;
+    color: #000;
+    background-color: #fff;
+    /*background: color(var(--pink) l(-5%)) no-repeat center center;*/
     background-size: cover;
-    background-color: var(--darkgrey);
+    /*background-color: var(--darkgrey);*/
 }
 
 .site-header:before {
@@ -227,7 +230,7 @@ The knock-on effect of this is ugly browser-scroll bars at the bottom, so 80px o
     flex-shrink: 0;
     display: block;
     margin-right: 24px;
-    padding: 11px 0;
+    /*padding: 11px 0;*/
     color: #fff;
     font-size: 1.7rem;
     line-height: 1em;
@@ -242,7 +245,7 @@ The knock-on effect of this is ugly browser-scroll bars at the bottom, so 80px o
 .site-nav-logo img {
     display: block;
     width: auto;
-    height: 21px;
+    height: 50px;
 }
 
 .nav {
@@ -262,8 +265,9 @@ The knock-on effect of this is ugly browser-scroll bars at the bottom, so 80px o
 .nav li a {
     display: block;
     margin: 0;
+    font-size: 1.5em;
     padding: 10px 12px;
-    color: #fff;
+    color: #000;
     opacity: 0.8;
 }
 
@@ -449,7 +453,7 @@ The first (most recent) post in the list is styled to be bigger than the others 
 .post-template .site-main,
 .page-template .site-main {
     padding-bottom: 4vw;
-    background: #fff;
+    background: #fff url(../greenyellowpinkdnabackground.png);
 }
 
 .post-full {

@@ -22,9 +22,12 @@
 
 </head>
 <body class="{{body_class}}">
-
     <div class="site-wrapper">
 
+        <!--<div id="svgAttributes"> <svg width="128" height="128" viewBox="0 0 128 128">-->
+            <!--<polygon points="64 69.05555977969988 8.574 99.97199731942723 63.061859227902765 67.43021608929091 64 3.9719973194272318 64.93814077209724 67.43021608929091 119.426 99.97199731942723 " fill="currentColor"></polygon>-->
+        <!--</svg> </div>-->
+        <!--<div id="main"></div>-->
         {{!-- All the main content gets inserted here, index.hbs, post.hbs, etc --}}
         {{{body}}}
 
@@ -63,9 +66,55 @@
         src="https://code.jquery.com/jquery-3.2.1.min.js"
         integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
         crossorigin="anonymous">
+        array = [8, 10, 12, 14,16]
+
+        var width = 400;
+        var height = 400;
+
+        var scale = d3.scale.linear()
+                .domain([0,1])
+                .range([-height/2,height/2]);
+
+        var circleTime = d3.select("#main")
+                .append("svg:svg")
+                .attr("width", width)
+                .attr("height", height);
+
+        circleTime.selectAll("circle")
+                .data(array)
+                .enter()
+                .append("circle")
+                .attr("cx", function(d,i){return (width/2 + scale(Math.random())*(i/5))})
+                .attr("cy", function(d,i){return (.5+i)*height/5})
+                .attr("r", function(d,i){return 5*(i+1)})
+                .attr("fill", function(){return randomcolor()})
+                .on("mousedown", animate);
+
+
+
+        function animate(){
+            d3.selectAll("circle")
+                    .transition()
+                    .duration(1000)
+                    .attr("cx", function(d,i){return (width/2 + scale(Math.random())*(i/5))})
+                    .attr("cy", function(d,i){return (.5+i)*height/5})
+                    .attr("r", function(d,i){return 10*Math.random()+ 10})
+                    .attr("fill", function(){return randomcolor()});
+        }
+
+        function randomcolor(){
+            return "#" + Math.random().toString(16).slice(2, 8) + "";
+        }
     </script>
     <script type="text/javascript" src="{{asset "js/jquery.fitvids.js"}}"></script>
-
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script>
+        var svgAttributes = anime({
+            targets: '#svgAttributes polygon',
+            points: '64 128 8.574 96 8.574 32 64 0 119.426 32 119.426 96',
+            easing: 'easeInOutExpo'
+        });
+    </script>
     {{#if pagination.pages}}
     <script>
         var maxPages = parseInt('{{pagination.pages}}');
